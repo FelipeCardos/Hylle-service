@@ -9,7 +9,7 @@ services:
       - POSTGRES_PASSWORD=lobster0930
       - POSTGRES_DB=hylle
     ports:
-      - "5432:5432"
+      - "0930:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     restart: always
