@@ -25,7 +25,7 @@ public class SecurityConfig {
                         // Libera o Swagger UI
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html", "/webjars/**").permitAll()
                         // Libera o login
-                        .requestMatchers("/auth/login").permitAll()
+                        .requestMatchers("/auth/sign-in").permitAll()
                         //Libera a criação de utilizador
                         .requestMatchers("/user").permitAll()
                         // Todos os outros caminhos requerem autenticação
