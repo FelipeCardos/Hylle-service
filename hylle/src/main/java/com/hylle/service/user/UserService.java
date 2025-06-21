@@ -1,10 +1,10 @@
-package com.hylle.service;
+package com.hylle.service.user;
 
-import com.hylle.dto.UserDTO;
-import com.hylle.dto.UserResponseDTO;
+import com.hylle.dto.user.UserDTO;
+import com.hylle.dto.user.UserResponseDTO;
 import com.hylle.exception.UserAlreadyExistsException;
-import com.hylle.model.User;
-import com.hylle.repository.UserRepository;
+import com.hylle.model.user.User;
+import com.hylle.repository.user.UserRepository;
 import com.hylle.utils.JwtUtil;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

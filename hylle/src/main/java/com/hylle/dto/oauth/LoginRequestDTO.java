@@ -1,4 +1,4 @@
-package com.hylle.dto;
+package com.hylle.dto.oauth;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

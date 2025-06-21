@@ -1,14 +1,16 @@
-package com.hylle.resource;
+package com.hylle.resource.oauth;
 
-import com.hylle.dto.LoginRequestDTO;
-import com.hylle.dto.UserResponseDTO;
-import com.hylle.service.OAuthService;
+import com.hylle.dto.oauth.LoginRequestDTO;
+import com.hylle.dto.user.UserResponseDTO;
+import com.hylle.service.oauth.OAuthService;
 import com.hylle.utils.JwtUtil;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 
+@Tag(name = "OAuth")
 @RestController
 @RequestMapping("/auth")
 public class OAuthResource {

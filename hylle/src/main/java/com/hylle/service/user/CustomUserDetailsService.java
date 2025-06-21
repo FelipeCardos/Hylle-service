@@ -1,7 +1,7 @@
-package com.hylle.service;
+package com.hylle.service.user;
 
-import com.hylle.model.User;
-import com.hylle.repository.UserRepository;
+import com.hylle.model.user.User;
+import com.hylle.repository.user.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

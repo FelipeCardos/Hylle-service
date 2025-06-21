@@ -1,8 +1,8 @@
-package com.hylle.service;
+package com.hylle.service.oauth;
 
-import com.hylle.dto.UserResponseDTO;
-import com.hylle.model.User;
-import com.hylle.repository.UserRepository;
+import com.hylle.dto.user.UserResponseDTO;
+import com.hylle.model.user.User;
+import com.hylle.repository.user.UserRepository;
 import com.hylle.utils.JwtUtil;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -12,11 +12,11 @@ import java.util.Optional;
 @Service
 public class OAuthService {
     private final UserRepository userRepository;
-    private JwtUtil jwtUtil;
+    private final JwtUtil jwtUtil;
 
-    public OAuthService(UserRepository userRepository){
+    public OAuthService(UserRepository userRepository, JwtUtil jwtUtil){
         this.userRepository = userRepository;
-        this.jwtUtil = new JwtUtil();
+        this.jwtUtil = jwtUtil;
 
     }
 
