@@ -22,7 +22,7 @@ public class JwtFilter extends OncePerRequestFilter {
 
     private static final List<String> EXCLUDED_PATHS = List.of(
             "/auth/sign-in",
-            "/user",
+            "/user$",
             "/swagger-ui",
             "/v3/api-docs"
     );
@@ -38,7 +38,6 @@ public class JwtFilter extends OncePerRequestFilter {
                                     FilterChain chain) throws ServletException, IOException {
 
         String path = request.getRequestURI();
-
         for (String excluded : EXCLUDED_PATHS) {
             if (path.startsWith(excluded)) {
                 chain.doFilter(request, response);

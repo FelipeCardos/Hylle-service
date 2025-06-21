@@ -27,17 +27,17 @@ public class ShelfService {
     }
 
     public ShelfResponseDTO createShelf(ShelfDTO shelfDTO, String username){
-        Optional<User> user = userRepository.findByUsername(username);
-        if(user.isEmpty()){
+        User user = userRepository.findByUsername(username);
+        if(user == null){
             throw new UsernameNotFoundException("User not found");
         }
 
-        List<String> userShelvesNames = getAllUserShelvesNames(user.get());
+        List<String> userShelvesNames = getAllUserShelvesNames(user);
         if(userShelvesNames.contains(shelfDTO.getName())){
             throw new ShelfAlreadyExistsException("Shelf already exists for this user");
         }
 
-        Shelf shelfToSave = buildShelf(shelfDTO, user.get());
+        Shelf shelfToSave = buildShelf(shelfDTO, user);
 
         return buildShelfResponse(shelfRepository.save(shelfToSave));
     }

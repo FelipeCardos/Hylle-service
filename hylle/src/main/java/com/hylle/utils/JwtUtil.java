@@ -23,15 +23,12 @@ public class JwtUtil {
 
     @PostConstruct
     public void init() {
-        System.out.println("JWT Secret from properties: " + secret);
         if (secret == null || secret.isEmpty()) {
             throw new IllegalStateException("jwt.secret property is missing or empty");
         }
         try {
             byte[] keyBytes = Base64.getDecoder().decode(secret);
             this.secretKey = Keys.hmacShaKeyFor(keyBytes);
-            System.out.println("JwtUtil secretKey initialized, length: " + keyBytes.length + " bytes");
-            System.out.println("This is your secret: "+ secret);
         } catch (IllegalArgumentException e) {
             throw new IllegalStateException("Failed to decode jwt.secret from Base64", e);
         }
@@ -50,26 +47,22 @@ public class JwtUtil {
                 .compact();
     }
 
-    // Extrai o username do token
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
 
-    // Valida o token comparando username e expirado
     public boolean validateToken(String token, String username) {
         try {
             return extractUsername(token).equals(username) && !isTokenExpired(token);
         } catch (JwtException | IllegalArgumentException e) {
-            return false; // Token inválido ou mal formado
+            return false;
         }
     }
 
-    // Verifica se o token expirou
     private boolean isTokenExpired(String token) {
         return extractClaim(token, Claims::getExpiration).before(new Date());
     }
 
-    // Extrai qualquer claim genérica usando função
     private <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
         try {
             final Claims claims = Jwts.parserBuilder()

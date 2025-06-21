@@ -21,9 +21,9 @@ public class OAuthService {
     }
 
     public UserResponseDTO signUserIn(UserDetails userDetails){
-        Optional<User> user = userRepository.findByUsername(userDetails.getUsername());
+        User user = userRepository.findByUsername(userDetails.getUsername());
 
-        return buildUserResponseDTO(user.get());
+        return buildUserResponseDTO(user);
     }
 
     private UserResponseDTO buildUserResponseDTO(User user){
